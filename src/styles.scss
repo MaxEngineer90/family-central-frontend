@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use './theming' as theming;
 
 @font-face {
   font-family: 'Open Sans';
@@ -108,7 +109,7 @@ $my-theme: mat.m2-define-light-theme((
 ));
 
 @include mat.all-component-themes($my-theme);
-
+@include theming.family-central-style;
 html, body {
   height: 100%;
 }

@@ -1,0 +1,5 @@
+@use 'app/components/app-chooser/app_chooser_theming' as app-chooser-theming;
+
+@mixin family-central-style() {
+  @include app-chooser-theming.app-chooser-style();
+}

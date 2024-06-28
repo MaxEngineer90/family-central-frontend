@@ -1,3 +1,14 @@
-<mat-toolbar color="primary">
-  <img alt="FamilyCentral Logo" height="40" ngSrc="{{logoPath}}" width="40">
-</mat-toolbar>
+<div class="grid-container">
+  <div class="col-12">
+    <mat-toolbar color="primary">
+      <div class="icon-title-container">
+        <img alt="FamilyCentral Logo" height="40" ngSrc="{{logoPath}}" width="40">
+        <label>Family-Central</label>
+      </div>
+      <app-app-chooser/>
+    </mat-toolbar>
+  </div>
+  <div class="col-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>

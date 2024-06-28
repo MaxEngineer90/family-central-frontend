@@ -1,0 +1,40 @@
+<!--TODO: Complete styling-->
+<form class="example-form">
+  <mat-form-field class="app-chooser" appearance="outline">
+    <input type="text" matInput [formControl]="optionControl" [matAutocomplete]="auto" #trigger="matAutocompleteTrigger"
+           placeholder="Wähle eine App aus">
+
+    <div matSuffix class="suffix-container">
+      @if (optionControl.value) {
+        <button
+          (click)="clearInput($event)"
+
+          aria-label="Clear"
+          mat-icon-button
+          type="button"
+        >
+          <mat-icon>clear</mat-icon>
+        </button>
+      } @else {
+        <button
+          (click)="openOrClosePanel($event, trigger)"
+          aria-label="Clear"
+          mat-icon-button
+          type="button"
+        >
+          <mat-icon>{{ arrowIconSubject.getValue() }}</mat-icon>
+        </button>
+      }
+
+    </div>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+                      (closed)="arrowIconSubject.next('arrow_drop_down')"
+                      (opened)="arrowIconSubject.next('arrow_drop_up')"
+                      (optionSelected)="arrowIconSubject.next('arrow_drop_down')">
+      @for (option of filteredOptions | async; track option) {
+        <mat-option class="option-name" [value]="option" (click)="onOptionSelected(option)">{{ option.name }}
+        </mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
