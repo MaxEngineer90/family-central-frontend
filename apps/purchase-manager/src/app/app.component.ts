@@ -1,28 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import {
-  MatCard,
-  MatCardActions,
-  MatCardContent,
-  MatCardFooter,
-  MatCardHeader,
-  MatCardTitle,
-} from '@angular/material/card';
+import { SharedComponent } from '@family-central-frontend/shared';
 
 @Component({
   standalone: true,
   imports: [
-    RouterModule,
-    MatCard,
-    MatCardTitle,
-    MatCardHeader,
-    MatCardContent,
-    MatCardFooter,
-    MatCardActions,
+    SharedComponent
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'purchase-manager';
