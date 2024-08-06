@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import { SharedComponent } from '@family-central-frontend/shared';
 
 @Component({
   standalone: true,
-  imports: [
-    SharedComponent
-  ],
+  imports: [],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

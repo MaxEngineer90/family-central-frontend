@@ -11,6 +11,12 @@
       "outputs": [
         "{options.outputPath}"
       ],
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "libs/ui/src/lib/style"
+        ]
+      },
+      "extractCss": true,
       "options": {
         "outputPath": "dist/apps/purchase-manager",
         "index": "apps/purchase-manager/src/index.html",
@@ -28,6 +34,7 @@
         ],
         "styles": [
           "@angular/material/prebuilt-themes/cyan-orange.css",
+          "libs/ui/src/lib/styles.scss",
           "apps/purchase-manager/src/styles.scss"
         ],
         "scripts": [],
