@@ -33,14 +33,21 @@ Targets can be defined in the `package.json` or `projects.json`. Learn more [in 
 ### Add anugular material
 
 Ensure you have Angular Material installed: npm i @angular/material
+
 ````bash
 npm i @angular/material
 ````
 
 Then:
+
 ````bash
 npx nx g @angular/material:ng-add --project=my-project-name
+````
 
+### Create lib
+
+````bash
+nx g @nx/angular:library libs/app-chooser --tags=app-chooser --style=scss
 ````
 
 ## Set up CI!
