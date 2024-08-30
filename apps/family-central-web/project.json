@@ -18,10 +18,8 @@
         "tsConfig": "apps/family-central-web/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          {
-            "glob": "**/!(*.ts)",
-            "input": "public/"
-          }
+          "apps/family-central-web/src/favicon.ico",
+          "apps/family-central-web/src/assets"
         ],
         "styles": [
           "apps/family-central-web/src/styles.scss",

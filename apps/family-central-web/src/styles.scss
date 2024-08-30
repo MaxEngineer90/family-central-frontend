@@ -6,21 +6,21 @@
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
-  src: url('../public/fonts/OpenSans-Regular.ttf') format('truetype');
+  src: url('assets/fonts/OpenSans-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 600;
-  src: url('../public/fonts/OpenSans-SemiBold.ttf') format('truetype');
+  src: url('assets/fonts/OpenSans-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 700;
-  src: url('../public/fonts/OpenSans-Bold.ttf') format('truetype');
+  src: url('assets/fonts/OpenSans-Bold.ttf') format('truetype');
 }
 
 $my-primary: mat.m2-define-palette(mat.$m2-blue-gray-palette, 900);

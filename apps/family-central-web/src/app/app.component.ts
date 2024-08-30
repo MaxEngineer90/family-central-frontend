@@ -12,5 +12,5 @@ import { NgOptimizedImage } from '@angular/common';
 })
 export class AppComponent {
   title = 'family-central';
-  protected readonly logoPath = '/images/logo.png';
+  readonly logoPath = 'assets/images/logo.png';
 }
