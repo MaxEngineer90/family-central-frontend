@@ -2,7 +2,7 @@ import {
   Component,
   DestroyRef, ElementRef,
   inject,
-  OnInit,
+  OnInit, output,
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -44,11 +44,11 @@ import { MatToolbar } from '@angular/material/toolbar';
 export class AppChooserComponent implements OnInit {
   @ViewChild('inputAutoComplete') inputAutoComplete!: ElementRef<HTMLInputElement>;
 
+  selectedAppOptionUrl = output<string>();
   protected filteredOptions!: Observable<Array<AppOption>>;
   protected optionControl = new FormControl<'' | AppOption>('');
   protected arrowIconSubject = new BehaviorSubject('arrow_drop_down');
 
-  private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
   private readonly appOptions: Array<AppOption> = [
     { name: 'einkauf-verwalten', url: '/purchase-manager' },
@@ -60,7 +60,7 @@ export class AppChooserComponent implements OnInit {
   }
 
   protected onOptionSelected(option: AppOption): void {
-     this.router.navigate([option.url]);
+    this.selectedAppOptionUrl.emit(option.url)
   }
 
   protected displayFn(option: AppOption): string {

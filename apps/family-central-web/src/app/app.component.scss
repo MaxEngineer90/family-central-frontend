@@ -1,3 +1,5 @@
+@import '../assets/variables.scss';
+
 mat-toolbar,
 .icon-title-container {
   display: flex;
@@ -8,6 +10,7 @@ mat-toolbar,
     gap: 0.5em;
 
     label {
+      color: $secondary-color;
       font-size: 0.85em;
     }
   }
