@@ -1,0 +1,14 @@
+mat-toolbar,
+.icon-title-container {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+
+  .icon-title-container {
+    gap: 0.5em;
+
+    label {
+      font-size: 0.85em;
+    }
+  }
+}
