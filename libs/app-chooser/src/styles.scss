@@ -1,4 +1,3 @@
-@import '../../ui/src/lib/styles';
 @use 'theming' as app-chooser-theming;
 
-@include app-chooser-theming.family-central-style
+@include app-chooser-theming.app-chooser-theming;

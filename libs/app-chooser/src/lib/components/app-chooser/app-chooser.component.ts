@@ -1,23 +1,45 @@
-import { Component, DestroyRef, inject, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BehaviorSubject, map, Observable, startWith } from 'rxjs';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AppOption } from '../../models';
-import { MatAutocomplete, MatAutocompleteTrigger, MatOption } from '@angular/material/autocomplete';
+import {
+  MatAutocomplete,
+  MatAutocompleteTrigger,
+  MatOption,
+} from '@angular/material/autocomplete';
 import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-
+import { MatToolbar } from '@angular/material/toolbar';
 
 @Component({
   selector: 'lib-app-chooser',
   standalone: true,
-  imports: [CommonModule, MatAutocomplete, MatOption, MatSuffix, MatFormField, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatIconButton, MatIcon],
+  imports: [
+    CommonModule,
+    MatAutocomplete,
+    MatOption,
+    MatSuffix,
+    MatFormField,
+    MatInput,
+    ReactiveFormsModule,
+    MatAutocompleteTrigger,
+    MatIconButton,
+    MatIcon,
+    MatToolbar,
+  ],
   templateUrl: './app-chooser.component.html',
-  styleUrl: './app-chooser.component.scss'
+  styleUrl: './app-chooser.component.scss',
 })
 export class AppChooserComponent implements OnInit {
   @ViewChild('inputAutoComplete') inputAutoComplete: any;
@@ -30,7 +52,7 @@ export class AppChooserComponent implements OnInit {
 
   private readonly options: Array<AppOption> = [
     { name: 'einkauf-verwalten', url: '/purchase-manager' },
-    { name: 'todo', url: '/todo' }
+    { name: 'todo', url: '/todo' },
   ];
 
   ngOnInit(): void {
@@ -38,7 +60,6 @@ export class AppChooserComponent implements OnInit {
   }
 
   protected onOptionSelected(option: AppOption): void {
-    console.log(option.url);
     this.router.navigate([option.url]);
   }
 

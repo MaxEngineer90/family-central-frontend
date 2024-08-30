@@ -1,40 +1,48 @@
-<form class="example-form">
-  <mat-form-field appearance="outline" class="app-chooser">
-    <input #trigger="matAutocompleteTrigger" [formControl]="optionControl" [matAutocomplete]="auto" matInput
-           placeholder="Wähle eine App aus"
-           type="text">
+<mat-form-field appearance="outline" class="app-chooser">
+  <input
+    #trigger="matAutocompleteTrigger"
+    [formControl]="optionControl"
+    [matAutocomplete]="auto"
+    matInput
+    placeholder="Wähle eine App aus"
+    type="text"
+  />
 
-    <div class="suffix-container" matSuffix>
-      @if (optionControl.value) {
-        <button
-          (click)="clearInput($event)"
-
-          aria-label="Clear"
-          mat-icon-button
-          type="button"
-        >
-          <mat-icon>clear</mat-icon>
-        </button>
-      } @else {
-        <button
-          (click)="openOrClosePanel($event, trigger)"
-          aria-label="Clear"
-          mat-icon-button
-          type="button"
-        >
-          <mat-icon>{{ arrowIconSubject.getValue() }}</mat-icon>
-        </button>
-      }
-
-    </div>
-    <mat-autocomplete #auto="matAutocomplete" (closed)="arrowIconSubject.next('arrow_drop_down')"
-                      (opened)="arrowIconSubject.next('arrow_drop_up')"
-                      (optionSelected)="arrowIconSubject.next('arrow_drop_down')"
-                      [displayWith]="displayFn">
-      @for (option of filteredOptions | async; track option) {
-        <mat-option class="option-name" [value]="option" (click)="onOptionSelected(option)">{{ option.name }}
-        </mat-option>
-      }
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
+  <div class="suffix-container" matSuffix>
+    @if (optionControl.value) {
+    <button
+      (click)="clearInput($event)"
+      aria-label="Clear"
+      mat-icon-button
+      type="button"
+    >
+      <mat-icon>clear</mat-icon>
+    </button>
+    } @else {
+    <button
+      (click)="openOrClosePanel($event, trigger)"
+      aria-label="Clear"
+      mat-icon-button
+      type="button"
+    >
+      <mat-icon>{{ arrowIconSubject.getValue() }}</mat-icon>
+    </button>
+    }
+  </div>
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    (closed)="arrowIconSubject.next('arrow_drop_down')"
+    (opened)="arrowIconSubject.next('arrow_drop_up')"
+    (optionSelected)="arrowIconSubject.next('arrow_drop_down')"
+    [displayWith]="displayFn"
+  >
+    @for (option of filteredOptions | async; track option) {
+    <mat-option
+      class="option-name"
+      [value]="option"
+      (click)="onOptionSelected(option)"
+      >{{ option.name }}
+    </mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>

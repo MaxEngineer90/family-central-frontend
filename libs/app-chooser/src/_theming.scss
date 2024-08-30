@@ -1,0 +1,5 @@
+@use 'lib/components/app-chooser/app_chooser_style' as app-chooser-style;
+
+@mixin app-chooser-theming() {
+  @include app-chooser-style.app-chooser-style();
+}
