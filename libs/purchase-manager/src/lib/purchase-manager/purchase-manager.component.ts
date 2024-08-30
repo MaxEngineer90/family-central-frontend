@@ -6,6 +6,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './purchase-manager.component.html',
-  styleUrl: './purchase-manager.component.css',
+  styleUrl: './purchase-manager.component.scss',
 })
 export class PurchaseManagerComponent {}

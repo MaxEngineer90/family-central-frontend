@@ -45,8 +45,8 @@ export class AppChooserComponent implements OnInit {
   @ViewChild('inputAutoComplete') inputAutoComplete!: ElementRef<HTMLInputElement>;
 
   selectedAppOptionUrl = output<string>();
-  protected filteredOptions!: Observable<Array<AppOption>>;
-  protected optionControl = new FormControl<'' | AppOption>('');
+  filteredOptions!: Observable<Array<AppOption>>;
+  optionControl = new FormControl<'' | AppOption>('');
   protected arrowIconSubject = new BehaviorSubject('arrow_drop_down');
 
   private readonly destroyRef = inject(DestroyRef);
@@ -59,7 +59,7 @@ export class AppChooserComponent implements OnInit {
     this.setFilteredOptions();
   }
 
-  protected onOptionSelected(option: AppOption): void {
+  onOptionSelected(option: AppOption): void {
     this.selectedAppOptionUrl.emit(option.url)
   }
 

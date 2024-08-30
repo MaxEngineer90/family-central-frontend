@@ -19,6 +19,7 @@
     "@angular/ssr": "18.2.1",
     "@nx/angular": "19.6.3",
     "express": "4.19.2",
+    "ng-mocks": "^14.13.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -33,6 +34,7 @@
     "@angular/cli": "~18.2.0",
     "@angular/compiler-cli": "18.2.1",
     "@angular/language-service": "18.2.1",
+    "@ngneat/spectator": "^19.0.0",
     "@nx/cypress": "19.6.3",
     "@nx/eslint": "19.6.3",
     "@nx/eslint-plugin": "19.6.3",
