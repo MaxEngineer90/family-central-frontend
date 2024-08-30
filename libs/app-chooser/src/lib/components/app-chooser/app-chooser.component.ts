@@ -1,6 +1,6 @@
 import {
   Component,
-  DestroyRef,
+  DestroyRef, ElementRef,
   inject,
   OnInit,
   ViewChild,
@@ -42,15 +42,15 @@ import { MatToolbar } from '@angular/material/toolbar';
   styleUrl: './app-chooser.component.scss',
 })
 export class AppChooserComponent implements OnInit {
-  @ViewChild('inputAutoComplete') inputAutoComplete: any;
+  @ViewChild('inputAutoComplete') inputAutoComplete!: ElementRef<HTMLInputElement>;
 
   protected filteredOptions!: Observable<Array<AppOption>>;
   protected optionControl = new FormControl<'' | AppOption>('');
   protected arrowIconSubject = new BehaviorSubject('arrow_drop_down');
+
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
-
-  private readonly options: Array<AppOption> = [
+  private readonly appOptions: Array<AppOption> = [
     { name: 'einkauf-verwalten', url: '/purchase-manager' },
     { name: 'todo', url: '/todo' },
   ];
@@ -60,20 +60,20 @@ export class AppChooserComponent implements OnInit {
   }
 
   protected onOptionSelected(option: AppOption): void {
-    this.router.navigate([option.url]);
+     this.router.navigate([option.url]);
   }
 
   protected displayFn(option: AppOption): string {
     return option && option.name ? option.name : '';
   }
 
-  protected clearInput(evt: any): void {
+  protected clearInput(evt: Event): void {
     evt.stopPropagation();
     this.optionControl?.reset();
     this.inputAutoComplete?.nativeElement.focus();
   }
 
-  protected openOrClosePanel(evt: any, trigger: MatAutocompleteTrigger): void {
+  protected openOrClosePanel(evt: Event, trigger: MatAutocompleteTrigger): void {
     evt.stopPropagation();
     if (trigger.panelOpen) trigger.closePanel();
     else trigger.openPanel();
@@ -85,15 +85,15 @@ export class AppChooserComponent implements OnInit {
       takeUntilDestroyed(this.destroyRef),
       map((value) => {
         const name = typeof value === 'string' ? value : value?.name;
-        return name ? this._filter(name as string) : this.options.slice();
+        return name ? this.filterAppOptionByName(name as string) : this.appOptions.slice();
       })
     );
   }
 
-  private _filter(name: string): Array<AppOption> {
+  private filterAppOptionByName(name: string): Array<AppOption> {
     const filterValue = name.toLowerCase();
 
-    return this.options.filter((option) =>
+    return this.appOptions.filter((option) =>
       option.name.toLowerCase().includes(filterValue)
     );
   }
