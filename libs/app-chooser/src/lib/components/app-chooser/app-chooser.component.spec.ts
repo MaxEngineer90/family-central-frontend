@@ -19,8 +19,8 @@ describe('AppChooserComponent', () => {
   const createComponent = createComponentFactory({
     component: AppChooserComponent,
     imports: [
-      CommonModule,
-      ReactiveFormsModule,
+      MockModule(CommonModule),
+      MockModule(ReactiveFormsModule),
       MockModule(MatAutocompleteModule),
       MockModule(MatFormFieldModule),
       MockModule(MatInputModule),
@@ -34,8 +34,21 @@ describe('AppChooserComponent', () => {
     spectator = createComponent();
   });
 
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   it('should create the component', () => {
     expect(spectator.component).toBeTruthy();
+  });
+
+  it('should emit selected option URL on option selection', () => {
+    const selectedOption = { name: 'todo', url: '/todo' };
+    const emitSpy = jest.spyOn(spectator.component.selectedAppOptionUrl, 'emit');
+
+    spectator.component.onOptionSelected(selectedOption);
+
+    expect(emitSpy).toHaveBeenCalledWith('/todo');
   });
 
   it('should initialize with correct filtered options', () => {
@@ -50,12 +63,5 @@ describe('AppChooserComponent', () => {
     });
   });
 
-  it('should emit selected option URL on option selection', () => {
-    const selectedOption = { name: 'todo', url: '/todo' };
-    const emitSpy = jest.spyOn(spectator.component.selectedAppOptionUrl, 'emit');
 
-    spectator.component.onOptionSelected(selectedOption);
-
-    expect(emitSpy).toHaveBeenCalledWith('/todo');
-  });
 });
