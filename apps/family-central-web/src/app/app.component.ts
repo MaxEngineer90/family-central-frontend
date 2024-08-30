@@ -11,6 +11,6 @@ import { NgOptimizedImage } from '@angular/common';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'purchase-manager';
+  title = 'family-central';
   protected readonly logoPath = '/images/logo.png';
 }

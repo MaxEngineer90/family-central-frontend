@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'purchase-manager',
+  displayName: 'family-central-web',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/purchase-manager',
+  coverageDirectory: '../../coverage/apps/family-central-web',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

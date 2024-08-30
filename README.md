@@ -2,7 +2,7 @@
 
 ## Commands
 
-Run `npx nx serve purchase-manager` to start the development server. Happy coding!
+Run `npx nx serve family-central-web` to start the development server. Happy coding!
 
 ## Build for production
 
@@ -48,6 +48,12 @@ npx nx g @angular/material:ng-add --project=my-project-name
 
 ````bash
 nx g @nx/angular:library libs/app-chooser --tags=app-chooser --style=scss
+````
+
+### Rename Project
+
+````bash
+nx g @nx/workspace:move --projectName old-project-name --destination apps/new-project-name --newProjectName new-project-name
 ````
 
 ## Set up CI!

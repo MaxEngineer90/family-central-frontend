@@ -1,41 +1,37 @@
 {
-  "name": "purchase-manager",
+  "name": "family-central-web",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/purchase-manager/src",
+  "sourceRoot": "apps/family-central-web/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "extractCss": true,
       "options": {
-        "outputPath": "dist/apps/purchase-manager",
-        "index": "apps/purchase-manager/src/index.html",
-        "browser": "apps/purchase-manager/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
-        "tsConfig": "apps/purchase-manager/tsconfig.app.json",
+        "outputPath": "dist/apps/family-central-web",
+        "index": "apps/family-central-web/src/index.html",
+        "browser": "apps/family-central-web/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/family-central-web/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/!(*.ts)",
-            "input": "public"
+            "input": "public/"
           }
         ],
         "styles": [
-          "apps/purchase-manager/src/styles.scss",
+          "apps/family-central-web/src/styles.scss",
           "libs/app-chooser/src/styles.scss"
         ],
         "scripts": [],
-        "server": "apps/purchase-manager/src/main.server.ts",
+        "server": "apps/family-central-web/src/main.server.ts",
         "prerender": true,
         "ssr": {
-          "entry": "apps/purchase-manager/server.ts"
+          "entry": "apps/family-central-web/server.ts"
         }
       },
       "configurations": {
@@ -66,10 +62,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "purchase-manager:build:production"
+          "buildTarget": "family-central-web:build:production"
         },
         "development": {
-          "buildTarget": "purchase-manager:build:development"
+          "buildTarget": "family-central-web:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -77,7 +73,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "purchase-manager:build"
+        "buildTarget": "family-central-web:build"
       }
     },
     "lint": {
@@ -85,19 +81,17 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/purchase-manager/jest.config.ts"
+        "jestConfig": "apps/family-central-web/jest.config.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "purchase-manager:build",
+        "buildTarget": "family-central-web:build",
         "port": 4200,
-        "staticFilePath": "dist/apps/purchase-manager/browser",
+        "staticFilePath": "dist/apps/family-central-web/browser",
         "spa": true
       }
     }
