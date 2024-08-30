@@ -1,0 +1,97 @@
+{
+  "name": "family-central-web",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/family-central-web/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "extractCss": true,
+      "options": {
+        "outputPath": "dist/apps/family-central-web",
+        "index": "apps/family-central-web/src/index.html",
+        "browser": "apps/family-central-web/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/family-central-web/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/family-central-web/src/favicon.ico",
+          "apps/family-central-web/src/assets"
+        ],
+        "styles": [
+          "apps/family-central-web/src/styles.scss",
+          "libs/app-chooser/src/styles.scss"
+        ],
+        "scripts": [],
+        "server": "apps/family-central-web/src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+          "entry": "apps/family-central-web/server.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "family-central-web:build:production"
+        },
+        "development": {
+          "buildTarget": "family-central-web:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "family-central-web:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/family-central-web/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "family-central-web:build",
+        "port": 4200,
+        "staticFilePath": "dist/apps/family-central-web/browser",
+        "spa": true
+      }
+    }
+  }
+}

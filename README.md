@@ -1,27 +1,78 @@
-# FamilyCentralFrontend
+# FamilyCentral
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+## Commands
 
-## Development server
+Run `npx nx serve family-central-web` to start the development server. Happy coding!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Build for production
 
-## Code scaffolding
+Run `npx nx build purchase-manager` to build the application. The build artifacts are stored in the output directory (e.g. `dist/` or `build/`), ready to be deployed.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Running tasks
 
-## Build
+To execute tasks with Nx use the following syntax:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+npx nx <target> <project> <...options>
+```
 
-## Running unit tests
+You can also run multiple targets:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+npx nx run-many -t <target1> <target2>
+```
 
-## Running end-to-end tests
+..or add `-p` to filter specific projects
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+npx nx run-many -t <target1> <target2> -p <proj1> <proj2>
+```
 
-## Further help
+Targets can be defined in the `package.json` or `projects.json`. Learn more [in the docs](https://nx.dev/features/run-tasks).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Add anugular material
+
+Ensure you have Angular Material installed: npm i @angular/material
+
+````bash
+npm i @angular/material
+````
+
+Then:
+
+````bash
+npx nx g @angular/material:ng-add --project=my-project-name
+````
+
+### Create lib
+
+````bash
+nx g @nx/angular:library libs/app-chooser --tags=app-chooser --style=scss
+````
+
+### Rename Project
+
+````bash
+nx g @nx/workspace:move --projectName old-project-name --destination apps/new-project-name --newProjectName new-project-name
+````
+
+## Set up CI!
+
+Nx comes with local caching already built-in (check your `nx.json`). On CI you might want to go a step further.
+
+- [Set up remote caching](https://nx.dev/features/share-your-cache)
+- [Set up task distribution across multiple machines](https://nx.dev/nx-cloud/features/distribute-task-execution)
+- [Learn more how to setup CI](https://nx.dev/recipes/ci)
+
+## Explore the project graph
+
+Run `npx nx graph` to show the graph of the workspace.
+It will show tasks that you can run with Nx.
+
+- [Learn more about Exploring the Project Graph](https://nx.dev/core-features/explore-graph)
+
+## Connect with us!
+
+- [Join the community](https://nx.dev/community)
+- [Subscribe to the Nx Youtube Channel](https://www.youtube.com/@nxdevtools)
+- [Follow us on Twitter](https://twitter.com/nxdevtools)

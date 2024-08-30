@@ -1,0 +1,29 @@
+:host {
+  margin-top: 0.9em;
+
+  .suffix-container {
+    display: flex;
+    align-items: center;
+    width: 30px;
+    margin-top: 1em;
+    margin-right: 0.8em;
+    gap: 2px;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      margin-right: 0.5em;
+      padding: 0;
+      min-width: auto;
+
+      mat-icon {
+        font-size: 0.5em;
+        margin-top: 0;
+        color: white;
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@mixin app-chooser-style() {
+  .app-chooser {
+    input,
+    input::placeholder {
+      color: white !important;
+      font-size: 1em;
+    }
+
+    .mat-mdc-form-field-flex {
+      height: 35px;
+      max-width: 200px;
+      align-items: center;
+      font-size: 1em;
+    }
+
+    // outlined
+    .mdc-text-field--outlined .mdc-notched-outline__leading {
+      border-top-left-radius: 80px !important;
+      border-bottom-left-radius: 80px !important;
+      border-color: white !important;
+    }
+
+    .mdc-text-field--outlined .mdc-notched-outline__notch {
+      border-color: white !important;
+    }
+
+    .mdc-text-field--outlined .mdc-notched-outline__trailing {
+      border-top-right-radius: 12px !important;
+      border-bottom-right-radius: 12px !important;
+      border-color: white !important;
+    }
+
+    // focused
+    .mdc-text-field--outlined.mdc-text-field--focused
+      .mdc-notched-outline__leading {
+      border-color: lightblue !important;
+    }
+
+    .mdc-text-field--outlined .mdc-notched-outline__notch {
+      border-color: lightblue !important;
+    }
+
+    .mdc-text-field--outlined.mdc-text-field--focused
+      .mdc-notched-outline__trailing {
+      border-color: lightblue !important;
+    }
+  }
+
+  .mat-mdc-autocomplete-panel {
+    margin-top: 0.1em;
+    border-radius: 1em !important;
+  }
+
+  .option-name {
+    font-size: 1em !important;
+  }
+}
