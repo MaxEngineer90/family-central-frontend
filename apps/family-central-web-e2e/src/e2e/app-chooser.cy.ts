@@ -9,6 +9,8 @@ describe('app-chooser', () => {
   });
 
   it('should match the previous screenshot', () => {
-    cy.visit('/');
+    cy.matchImageSnapshot('snap-from-app', {
+      snapFilenameExtension: '-1',
+    });
   });
 });
