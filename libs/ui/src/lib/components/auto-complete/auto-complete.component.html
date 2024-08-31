@@ -1,36 +1,36 @@
-<mat-form-field appearance="outline" class="app-chooser">
+<mat-form-field appearance="outline" class="frf-auto-complete">
   <input
     #trigger="matAutocompleteTrigger"
     [formControl]="optionControl"
     [matAutocomplete]="auto"
     matInput
-    placeholder="Wähle eine App aus"
+    placeholder="{{ placeHolder() }}"
     type="text"
   />
 
   <div class="suffix-container" matSuffix>
-    @if (optionControl.value) {
     <button
       (click)="clearInput($event)"
+      *ngIf="optionControl.value"
       aria-label="Clear"
+      data-cy="clear-input"
       mat-icon-button
       type="button"
-      data-cy="clear-input"
     >
       <mat-icon>clear</mat-icon>
     </button>
-    } @else {
     <button
       (click)="openOrClosePanel($event, trigger)"
-      aria-label="Clear"
+      *ngIf="!optionControl.value"
+      aria-label="Toggle Panel"
+      data-cy="toggle-panel"
       mat-icon-button
       type="button"
-      data-cy="open-panel"
     >
       <mat-icon>{{ arrowIconSubject.getValue() }}</mat-icon>
     </button>
-    }
   </div>
+
   <mat-autocomplete
     #auto="matAutocomplete"
     (closed)="arrowIconSubject.next('arrow_drop_down')"
@@ -38,14 +38,14 @@
     (optionSelected)="arrowIconSubject.next('arrow_drop_down')"
     [displayWith]="displayFn"
   >
-    @for (option of filteredOptions | async; track option) {
     <mat-option
-      class="app-option-name"
-      [value]="option"
       (click)="onOptionSelected(option)"
+      *ngFor="let option of filteredOptions | async"
+      [value]="option"
+      class="app-option-name"
       data-cy="app-option"
-      >{{ option.name }}
+    >
+      {{ option.name }}
     </mat-option>
-    }
   </mat-autocomplete>
 </mat-form-field>

@@ -8,7 +8,11 @@
     />
     <label data-cy="headline">Family-Central</label>
   </div>
-  <lib-app-chooser (selectedAppOptionUrl)="navigateToSelectedApp($event)" />
+  <fcf-auto-complete
+    (selectedAppOptionUrl)="navigateToSelectedApp($event)"
+    [appOptions]="appOptions"
+    [placeHolder]="'Wählen Sie eine App aus'"
+  ></fcf-auto-complete>
 </mat-toolbar>
 
 <router-outlet />

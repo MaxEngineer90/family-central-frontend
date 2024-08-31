@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'lib-purchase-manager',
+  selector: 'fcf-purchase-manager',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './purchase-manager.component.html',

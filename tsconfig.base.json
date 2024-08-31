@@ -15,11 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@family-central-frontend/app-chooser": ["libs/app-chooser/src/index.ts"],
       "@family-central-frontend/purchase-manager": [
         "libs/purchase-manager/src/index.ts"
       ],
-      "@family-central-frontend/shared": ["libs/shared/src/index.ts"]
+      "@family-central-frontend/shared": ["libs/shared/src/index.ts"],
+      "@family-central-frontend/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
