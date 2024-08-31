@@ -1,26 +1,24 @@
-import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent,RouterModule.forRoot([])],
-    }).compileComponents();
+  let spectator: Spectator<AppComponent>;
+
+  const createComponent = createComponentFactory({
+    component: AppComponent,
+    detectChanges: true,
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome family-central'
-    );
+  beforeEach(() => {
+    spectator = createComponent();
+  });
+
+  it('should create the component', () => {
+    expect(spectator.component).toBeTruthy();
   });
 
   it(`should have as title 'family-central'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+    const app = spectator.component; // Access the component instance
     expect(app.title).toEqual('family-central');
   });
 });

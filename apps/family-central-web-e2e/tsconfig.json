@@ -4,7 +4,11 @@
     "allowJs": true,
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
-    "types": ["cypress", "node"],
+    "types": [
+      "cypress",
+      "node",
+      "@simonsmith/cypress-image-snapshot/types"
+    ],
     "sourceMap": false,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
