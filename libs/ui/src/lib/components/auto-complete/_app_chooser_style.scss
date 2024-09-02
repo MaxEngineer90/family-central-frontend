@@ -1,3 +1,5 @@
+@import '../../../../../../variabels/variables';
+
 @mixin auto-complete-style() {
   .frf-auto-complete {
     input,
@@ -8,15 +10,14 @@
 
     .mat-mdc-form-field-flex {
       height: 35px;
-      max-width: 200px;
       align-items: center;
       font-size: 1em;
     }
 
     // outlined
     .mdc-text-field--outlined .mdc-notched-outline__leading {
-      border-top-left-radius: 80px !important;
-      border-bottom-left-radius: 80px !important;
+      border-top-left-radius: $border-radius !important;
+      border-bottom-left-radius: $border-radius !important;
       border-color: white !important;
     }
 
@@ -31,8 +32,8 @@
     }
 
     // focused
-    .mdc-text-field--outlined.mdc-text-field--focused
-      .mdc-notched-outline__leading {
+    .mdc-text-field--outlined.mdc-text-field--focused,
+    .mdc-notched-outline__leading {
       border-color: lightblue !important;
     }
 
@@ -40,8 +41,8 @@
       border-color: lightblue !important;
     }
 
-    .mdc-text-field--outlined.mdc-text-field--focused
-      .mdc-notched-outline__trailing {
+    .mdc-text-field--outlined.mdc-text-field--focused,
+    .mdc-notched-outline__trailing {
       border-color: lightblue !important;
     }
   }

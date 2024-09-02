@@ -1,1 +1,5 @@
-<p>purchase-manager works!</p>
+<fcf-auto-complete
+  (selectedAppOptionUrl)="navigateToSelectedApp($event)"
+  [appOptions]="appOptions"
+  [placeHolder]="'Suchen'"
+></fcf-auto-complete>
