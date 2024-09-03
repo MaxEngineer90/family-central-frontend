@@ -15,7 +15,7 @@ import {
 import { BehaviorSubject, map, Observable, startWith } from 'rxjs';
 
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { MatIconButton } from '@angular/material/button';
+import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -35,6 +35,7 @@ import { AppOption } from '../../models';
     MatFormField,
     MatInput,
     MatOption,
+    MatMiniFabButton,
   ],
   templateUrl: './auto-complete.component.html',
   styleUrl: './auto-complete.component.scss',
