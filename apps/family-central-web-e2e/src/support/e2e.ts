@@ -1,23 +1,5 @@
-// ***********************************************************
-// This example support/e2e.ts is processed and
-// loaded automatically before your test files.
-//
-// This is a great place to put global configuration and
-// behavior that modifies Cypress.
-//
-// You can change the location of this file or turn off
-// automatically serving support files with the
-// 'supportFile' configuration option.
-//
-// You can read more here:
-// https://on.cypress.io/configuration
-// ***********************************************************
-
-// Import commands.ts using ES2015 syntax:
 import './commands';
 import { addMatchImageSnapshotCommand } from '@simonsmith/cypress-image-snapshot/command';
-
-addMatchImageSnapshotCommand();
 
 // can also add any default options to be used
 // by all instances of `matchImageSnapshot`
@@ -26,4 +8,7 @@ addMatchImageSnapshotCommand({
   comparisonMethod: 'ssim',
   capture: 'viewport',
   blackout: ['.some-element'],
+  e2eSpecDir: 'src/e2e', // Dies sollte der relative Pfad zu den Testdateien sein
+  customSnapshotsDir: 'snapshots/good', // Speichert die "good" Snapshots in diesem Ordner
+  customDiffDir: 'snapshots/diffs',
 });

@@ -13,19 +13,10 @@ export default defineConfig({
       ciWebServerCommand: 'nx run purchase-manager:serve-static',
     }),
     baseUrl: 'http://localhost:4200',
+    videosFolder: 'cypress/videos',
     setupNodeEvents(on) {
       addMatchImageSnapshotPlugin(on);
-      on('task', {
-        'image:snapshot': ({ image }) => {
-          const customSnapshotsDir = './snapshots';
-          const customDiffDir = './snapshots/diff';
-
-          return {
-            customSnapshotsDir,
-            customDiffDir,
-          };
-        },
-      });
     },
+    supportFile: 'src/support/e2e.ts',
   },
 });
