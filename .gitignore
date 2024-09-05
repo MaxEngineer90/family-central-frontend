@@ -42,3 +42,4 @@ Thumbs.db
 .nx/workspace-data
 
 .angular
+/apps/family-central-web-e2e/snapshots/diff/
