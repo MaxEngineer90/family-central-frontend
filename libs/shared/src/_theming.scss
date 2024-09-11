@@ -1,0 +1,6 @@
+@use '../../shared/src/lib/components/auto-complete/app_chooser_style' as
+  auto-complete-style;
+
+@mixin auto-complete-theming() {
+  @include auto-complete-style.auto-complete-style();
+}

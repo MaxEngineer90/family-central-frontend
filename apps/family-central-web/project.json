@@ -27,7 +27,7 @@
         ],
         "styles": [
           "apps/family-central-web/src/styles.scss",
-          "libs/ui/src/styles.scss"
+          "libs/shared/src/styles.scss"
         ],
         "scripts": [],
         "server": "apps/family-central-web/src/main.server.ts",

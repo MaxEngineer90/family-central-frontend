@@ -3,7 +3,10 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 import { MatToolbar } from '@angular/material/toolbar';
 import { Router, RouterOutlet } from '@angular/router';
-import { AppOption, AutoCompleteComponent } from '@family-central-frontend/ui';
+import {
+  AppOption,
+  AutoCompleteComponent,
+} from '@family-central-frontend/shared';
 
 @Component({
   selector: 'app-navigation-bar',

@@ -19,7 +19,7 @@ import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { AppOption } from '../../models';
+import { AppOption } from '../../../../../shared/src/lib/models';
 
 @Component({
   selector: 'fcf-auto-complete',
