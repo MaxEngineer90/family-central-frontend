@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
   <div class="icon-title-container">
     <img
       alt="FamilyCentral Logo"
@@ -11,7 +11,7 @@
   <fcf-auto-complete
     (selectedAppOptionUrl)="navigateToSelectedApp($event)"
     [appOptions]="appOptions"
-    [placeHolder]="'Wählen Sie eine App aus'"
+    [placeHolder]="'choose your app'"
   ></fcf-auto-complete>
 </mat-toolbar>
 

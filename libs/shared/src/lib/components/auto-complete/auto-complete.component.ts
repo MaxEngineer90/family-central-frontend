@@ -1,6 +1,8 @@
 import {
   Component,
+  DestroyRef,
   ElementRef,
+  inject,
   input,
   OnInit,
   output,
@@ -15,11 +17,17 @@ import {
 import { BehaviorSubject, map, Observable, startWith } from 'rxjs';
 
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
+import {
+  MatButton,
+  MatIconButton,
+  MatMiniFabButton,
+} from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { AppOption } from '../../../../../shared/src/lib/models';
+import { AppOption } from '../../models';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'fcf-auto-complete',
@@ -36,6 +44,7 @@ import { AppOption } from '../../../../../shared/src/lib/models';
     MatInput,
     MatOption,
     MatMiniFabButton,
+    MatButton,
   ],
   templateUrl: './auto-complete.component.html',
   styleUrl: './auto-complete.component.scss',
@@ -44,7 +53,7 @@ export class AutoCompleteComponent implements OnInit {
   @ViewChild('trigger') trigger!: MatAutocompleteTrigger;
   @ViewChild('input') input!: ElementRef<HTMLInputElement>;
 
-  //TODO: MOVE TO SHARED
+  //TODO:
   // RENAME Variabels
   appOptions = input.required<Array<AppOption>>();
   placeHolder = input.required<string>();
@@ -54,16 +63,11 @@ export class AutoCompleteComponent implements OnInit {
   filteredOptions!: Observable<AppOption[]>;
   arrowIconSubject = new BehaviorSubject<string>('arrow_drop_down');
 
+  readonly userService = inject(UserService);
+  private readonly destroyRef = inject(DestroyRef);
+
   ngOnInit(): void {
-    this.filteredOptions = this.optionControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => {
-        const name = typeof value === 'string' ? value : value?.name;
-        return name
-          ? this.filterAppOptionByName(name)
-          : this.appOptions().slice();
-      })
-    );
+    this.filterOptionsByName();
   }
 
   onOptionSelected(option: AppOption): void {
@@ -83,6 +87,19 @@ export class AutoCompleteComponent implements OnInit {
   openOrClosePanel(evt: Event, trigger: MatAutocompleteTrigger): void {
     evt.stopPropagation();
     trigger.panelOpen ? trigger.closePanel() : trigger.openPanel();
+  }
+
+  private filterOptionsByName() {
+    this.filteredOptions = this.optionControl.valueChanges.pipe(
+      takeUntilDestroyed(this.destroyRef),
+      startWith(''),
+      map((value) => {
+        const name = typeof value === 'string' ? value : value?.name;
+        return name
+          ? this.filterAppOptionByName(name)
+          : this.appOptions().slice();
+      })
+    );
   }
 
   private filterAppOptionByName(name: string): AppOption[] {

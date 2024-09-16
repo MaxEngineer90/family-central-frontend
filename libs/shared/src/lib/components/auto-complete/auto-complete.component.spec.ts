@@ -1,11 +1,20 @@
 import { AutoCompleteComponent } from './auto-complete.component';
 import { MockModule } from 'ng-mocks';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { createComponentFactory, Spectator } from '@ngneat/spectator';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AppOption } from '@family-central-frontend/ui';
+
+import { UserService } from '../../services/user/user.service';
+import { AppOption } from '../../models';
+
+import {
+  createComponentFactory,
+  mockProvider,
+  Spectator,
+} from '@ngneat/spectator/jest';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('AutoCompleteComponent', () => {
   let spectator: Spectator<AutoCompleteComponent>;
@@ -23,17 +32,17 @@ describe('AutoCompleteComponent', () => {
       MockModule(MatInputModule),
       MockModule(ReactiveFormsModule),
     ],
+    providers: [mockProvider(UserService)],
     detectChanges: true,
   });
 
-  beforeEach(() => {
+  beforeEach(fakeAsync(() => {
     spectator = createComponent({
       props: { placeHolder: 'Hello World', appOptions: appOptions },
     });
-  });
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
+    tick();
+    spectator.detectChanges();
+  }));
 
   it('should create', () => {
     expect(spectator.component).toBeTruthy();
@@ -90,24 +99,5 @@ describe('AutoCompleteComponent', () => {
 
     spectator.click(clearButton!);
     expect(inputElement?.textContent).toBe('');
-  });
-
-  xit('should toggle panel open and closed', () => {
-    const trigger = spectator.component.trigger;
-
-    expect(spyOn).toBeDefined();
-
-    spyOn(trigger, 'openPanel');
-    spyOn(trigger, 'closePanel');
-
-    // Simulate opening the panel
-    spectator.component.openOrClosePanel(new Event('click'), trigger);
-    spectator.detectChanges();
-    expect(trigger.openPanel).toHaveBeenCalled();
-
-    // Simulate closing the panel
-    spectator.component.openOrClosePanel(new Event('click'), trigger);
-    spectator.detectChanges();
-    expect(trigger.closePanel).toHaveBeenCalled();
   });
 });

@@ -25,7 +25,7 @@ import {
 export class NavigationBarComponent {
   readonly logoPath = 'assets/images/logo.png';
   protected readonly appOptions: Array<AppOption> = [
-    { name: 'einkauf-verwalten', url: '/purchase-manager' },
+    { name: 'purchase-manager', url: '/purchase-manager' },
     { name: 'todo', url: '/todo' },
   ];
   private readonly router = inject(Router);

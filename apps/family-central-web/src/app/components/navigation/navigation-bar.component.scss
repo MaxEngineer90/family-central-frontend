@@ -5,6 +5,10 @@ mat-toolbar,
   display: flex;
   align-items: center;
   gap: 2em;
+}
+
+mat-toolbar {
+  background-color: $primary-color;
 
   .icon-title-container {
     gap: 0.5em;
